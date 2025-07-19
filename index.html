@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIRA: Gender-Sensitive Emergency Communication Wearable</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc;
+        color: #333;
+        line-height: 1.6;
+      }
+      .header {
+        background: linear-gradient(to right, #0d9488, #14b8a6);
+        color: white;
+        padding: 3rem 0;
+        text-align: center;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.2);
+      }
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #047857;
+        margin-bottom: 2rem;
+        text-align: center;
+        position: relative;
+        padding-bottom: 0.5rem;
+      }
+      .section-title::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background-color: #14b8a6;
+        border-radius: 2px;
+      }
+      .card {
+        background-color: #ffffff;
+        border-radius: 16px;
+        padding: 2.5rem;
+        box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1),
+          0 6px 12px -3px rgba(0, 0, 0, 0.05);
+        margin-bottom: 2.5rem;
+        border: 1px solid #e0f2f7;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+      .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.15),
+          0 8px 16px -4px rgba(0, 0, 0, 0.08);
+      }
+      .arch-node {
+        background-color: #ffffff;
+        border: 2px solid #0d9488;
+        border-radius: 16px;
+        padding: 1.25rem;
+        box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.1);
+        min-width: 280px;
+        transition: transform 0.2s;
+      }
+      .arch-node:hover {
+        transform: translateY(-5px);
+      }
+      .arch-arrow-down {
+        width: 3px;
+        background-color: #14b8a6;
+        height: 40px;
+        margin: 12px auto;
+        position: relative;
+      }
+      .arch-arrow-down::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: -8px;
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 16px solid #14b8a6;
+      }
+      @media (max-width: 768px) {
+        .arch-diagram-flow {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <h1 class="text-6xl font-extrabold mb-4">VIRA</h1>
+      <p class="text-2xl font-light opacity-90">
+        Gender-Sensitive Emergency Communication Wearable
+      </p>
+    </header>
+
+    <main class="container mx-auto px-4 my-12">
+      <!-- OVERVIEW -->
+      <section>
+        <h2 class="section-title">Project Overview</h2>
+        <div class="card">
+          <p class="text-lg mb-4">
+            VIRA is a low-cost, offline, one-touch wearable emergency alert
+            system designed for women in disaster environments, ensuring quick,
+            discreet communication without relying on internet or mobile
+            networks.
+          </p>
+          <p class="text-lg">
+            Alerts are sent via LoRa, received by base units, and optionally
+            forwarded to a web dashboard. Real-time vibration and LED feedback
+            provide reassurance to the user.
+          </p>
+        </div>
+      </section>
+
+      <!-- PROTOTYPE -->
+      <section>
+        <h2 class="section-title">Prototype Hardware</h2>
+        <div
+          class="card flex flex-col md:flex-row justify-center items-center gap-8"
+        >
+          <img
+            src="images/vira_prototype1.jpg"
+            alt="VIRA Prototype 1"
+            class="rounded-lg shadow-xl max-w-sm h-auto"
+          />
+          <img
+            src="images/vira_prototype2.jpg"
+            alt="VIRA Prototype 2"
+            class="rounded-lg shadow-xl max-w-sm h-auto"
+          />
+        </div>
+      </section>
+
+      <!-- ARCHITECTURE -->
+      <section>
+        <h2 class="section-title">VIRA System Architecture</h2>
+        <div class="card flex flex-col items-center arch-diagram-flow">
+          <div class="arch-node text-center">
+            <h3 class="font-bold text-lg text-teal-700 mb-2">
+              1. Wearable Device
+            </h3>
+            <p class="text-sm">
+              ESP32 + LoRa Module with 2 SOS buttons (e.g., medical, safety),
+              LED indicators, LoRa communication.
+            </p>
+          </div>
+
+          <div class="arch-arrow-down"></div>
+
+          <div class="arch-node text-center">
+            <h3 class="font-bold text-lg text-teal-700 mb-2">
+              2. LoRa Mesh Network
+            </h3>
+            <p class="text-sm">
+              LoRa Relays or Gateways (ESP32/Heltec devices) forward messages
+              locally or to cloud.
+            </p>
+          </div>
+
+          <div class="arch-arrow-down"></div>
+
+          <div class="arch-node text-center">
+            <h3 class="font-bold text-lg text-teal-700 mb-2">
+              3. Cloud Backend (Optional)
+            </h3>
+            <p class="text-sm">
+              Firebase Realtime Database logs alerts, manages volunteers,
+              stocks, and provides notifications.
+            </p>
+          </div>
+
+          <div class="arch-arrow-down"></div>
+
+          <div class="arch-node text-center">
+            <h3 class="font-bold text-lg text-teal-700 mb-2">
+              4. Mobile/Web Dashboard
+            </h3>
+            <p class="text-sm">
+              Flutter app/web shows real-time alerts, volunteer directory,
+              emergency contacts, and stocks.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer
+      class="bg-gray-900 text-white text-center p-8 mt-12 rounded-tr-3xl rounded-tl-3xl"
+    >
+      <p class="text-lg">&copy; 2025 VIRA Project. All rights reserved.</p>
+      <p class="text-sm mt-2 opacity-80">
+        Empowering women, building resilience.
+      </p>
+    </footer>
+  </body>
+</html>
