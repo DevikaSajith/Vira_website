@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIRA: Gender-Sensitive Emergency Communication Wearable</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Custom styles for a refined aesthetic */
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc; /* Very light blue-gray background */
+        color: #333;
+        line-height: 1.6;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.5rem;
+      }
+      .header {
+        background: linear-gradient(
+          to right,
+          #0d9488,
+          #14b8a6
+        ); /* Teal gradient */
+        color: white;
+        padding: 3rem 0; /* More vertical padding */
+        text-align: center;
+        border-bottom-left-radius: 30px; /* More pronounced rounded corners */
+        border-bottom-right-radius: 30px;
+        box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+      }
+      .section-title {
+        font-size: 2.5rem; /* Slightly larger heading */
+        font-weight: 800; /* Extra bold */
+        color: #047857; /* Darker teal */
+        margin-bottom: 2rem; /* More space below title */
+        text-align: center;
+        position: relative;
+        padding-bottom: 0.5rem;
+      }
+      .section-title::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: 80px; /* Underline effect */
+        height: 4px;
+        background-color: #14b8a6; /* Teal underline */
+        border-radius: 2px;
+      }
+      .card {
+        background-color: #ffffff;
+        border-radius: 16px; /* More rounded corners */
+        padding: 2.5rem; /* More padding inside cards */
+        box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1),
+          0 6px 12px -3px rgba(0, 0, 0, 0.05); /* Enhanced shadow */
+        margin-bottom: 2.5rem; /* More space between cards */
+        border: 1px solid #e0f2f7; /* Subtle light blue border */
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+      .card:hover {
+        transform: translateY(-8px); /* More pronounced lift on hover */
+        box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.15),
+          0 8px 16px -4px rgba(0, 0, 0, 0.08);
+      }
+      /* Custom styles for architecture diagram arrows and layout */
+      .arch-node {
+        background-color: #ffffff;
+        border: 2px solid #0d9488; /* Darker teal border */
+        border-radius: 16px; /* More rounded corners */
+        padding: 1.25rem; /* Slightly more padding */
+        box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        min-width: 280px; /* Ensure nodes are wide enough */
+      }
+      .arch-node:hover {
+        transform: translateY(-5px); /* Slight lift on hover */
+        box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.15);
+      }
+      .arch-arrow-down {
+        width: 3px; /* Thicker arrow */
+        background-color: #14b8a6; /* Teal for arrows */
+        height: 40px; /* Longer arrows */
+        margin: 12px auto; /* More margin */
+        position: relative;
+      }
+      .arch-arrow-down::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: -8px; /* Adjust for thicker arrow */
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 16px solid #14b8a6; /* Larger arrowhead */
+      }
+      /* Responsive adjustments for architecture diagram */
+      @media (max-width: 768px) {
+        .arch-diagram-flow {
+          flex-direction: column;
+          align-items: center;
+        }
+        .arch-node {
+          margin-bottom: 20px;
+          width: 95%; /* Full width on small screens */
+          max-width: 400px; /* Limit max width */
+        }
+        .arch-arrow-down {
+          height: 30px; /* Shorter arrows on mobile */
+        }
+        .header h1 {
+          font-size: 3.5rem; /* Adjust header font size for mobile */
+        }
+        .header p {
+          font-size: 1.125rem; /* Adjust header paragraph font size */
+        }
+        .section-title {
+          font-size: 2rem; /* Adjust section title font size for mobile */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="header">
+      <div class="container">
+        <h1 class="text-6xl font-extrabold mb-4 tracking-wide">VIRA</h1>
+        <p class="text-2xl font-light opacity-90">
+          Gender-Sensitive Emergency Communication Wearable
+        </p>
+      </div>
+    </header>
+
+    <main class="container my-12">
+      <!-- Project Overview Section -->
+      <section class="mb-12">
+        <h2 class="section-title">Project Overview</h2>
+        <div class="card">
+          <p class="text-lg text-gray-700 mb-4">
+            VIRA is a low-cost, offline, one-touch wearable emergency alert
+            system designed specifically for women in disaster relief or crisis
+            environments. It enables women to communicate their needs
+            discreetly, reliably, and quickly without the need for mobile
+            networks, internet, or verbal communication.
+          </p>
+          <p class="text-lg text-gray-700">
+            The wearable device sends alerts via LoRa communication to a nearby
+            base unit. The base unit receives, logs, and forwards this
+            information to a centralized dashboard or application for responders
+            to take immediate action. The device provides real-time
+            acknowledgment (ACK) feedback to the user to confirm that their
+            request has been received.
+          </p>
+        </div>
+      </section>
+
+      <!-- Prototype Hardware Section -->
+      <section class="mb-12">
+        <h2 class="section-title">Prototype Hardware</h2>
+        <div class="card flex flex-col items-center p-8">
+          <!-- Image for the prototype hardware -->
+          <img
+            src="WhatsApp Image 2025-07-19 at 14.52.43_c3da9661.jpg-37e477c3-b003-4c27-98bd-51202e61758d"
+            alt="VIRA Prototype Hardware"
+            class="rounded-lg shadow-xl max-w-full h-auto border border-gray-200"
+            style="max-height: 500px; object-fit: contain"
+          />
+        </div>
+        <p class="text-center text-gray-600 text-base mt-2">
+          (Image of the VIRA prototype hardware)
+        </p>
+      </section>
+
+      <!-- Key Features Section -->
+      <section class="mb-12">
+        <h2 class="section-title">Key Features</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="card">
+            <h3 class="text-xl font-semibold text-teal-700 mb-3">
+              Offline First
+            </h3>
+            <p class="text-gray-700">
+              Works without mobile networks or internet, ideal for crisis zones,
+              ensuring reliability in remote or disaster-stricken areas.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="text-xl font-semibold text-teal-700 mb-3">
+              One-Touch Alerts
+            </h3>
+            <p class="text-gray-700">
+              Simple, discreet button presses for different emergency types
+              (e.g., medical, food, safety), simplifying rapid response.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="text-xl font-semibold text-teal-700 mb-3">
+              LoRa Communication
+            </h3>
+            <p class="text-gray-700">
+              Utilizes long-range, ultra-low power wireless transmission for
+              reliable alerts, extending communication reach significantly.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="text-xl font-semibold text-teal-700 mb-3">
+              Real-time ACK
+            </h3>
+            <p class="text-gray-700">
+              Immediate vibration and LED feedback confirm alert reception to
+              the user, building trust and reducing anxiety.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="text-xl font-semibold text-teal-700 mb-3">
+              Gender-Sensitive Design
+            </h3>
+            <p class="text-gray-700">
+              Empowers women with discreet and reliable communication,
+              addressing specific safety needs in vulnerable environments.
+            </p>
+          </div>
+          <div class="card">
+            <h3 class="text-xl font-semibold text-teal-700 mb-3">
+              Scalable System
+            </h3>
+            <p class="text-gray-700">
+              Designed to scale from a few devices to thousands with distributed
+              gateways, supporting large-scale humanitarian efforts.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- System Architecture Diagram Section -->
+      <section class="mb-12">
+        <h2 class="section-title">VIRA System Architecture</h2>
+        <div
+          class="card p-8 md:p-12 flex flex-col items-center arch-diagram-flow"
+        >
+          <!-- 1. Wearable Device -->
+          <div class="arch-node text-center">
+            <h3 class="text-lg font-bold text-teal-800 mb-2">
+              1. Wearable Device
+            </h3>
+            <p class="text-gray-700 text-sm mb-2">
+              <strong>(ESP32 + LoRa Module)</strong>
+            </p>
+            <ul
+              class="list-disc list-inside text-left text-gray-600 text-sm space-y-1"
+            >
+              <li><strong>Inputs:</strong> SOS Button</li>
+              <li>
+                <strong>Outputs:</strong> LED Indicators (Alert Sent / Network
+                Status)
+              </li>
+              <li>
+                <strong>Communication:</strong> LoRa (Mesh / Point-to-Point)
+              </li>
+            </ul>
+          </div>
+
+          <div class="arch-arrow-down"></div>
+
+          <!-- 2. LoRa Mesh Network -->
+          <div class="arch-node text-center">
+            <h3 class="text-lg font-bold text-teal-800 mb-2">
+              2. LoRa Mesh Network
+            </h3>
+            <p class="text-gray-700 text-sm mb-2">
+              <strong>(ESP32/Heltec LoRa Devices)</strong>
+            </p>
+            <ul
+              class="list-disc list-inside text-left text-gray-600 text-sm space-y-1"
+            >
+              <li>Relay SOS messages</li>
+              <li>
+                Optional LoRa Gateway (for cloud relay if internet available)
+              </li>
+            </ul>
+          </div>
+
+          <div class="arch-arrow-down"></div>
+
+          <!-- 3. Backend -->
+          <div class="arch-node text-center">
+            <h3 class="text-lg font-bold text-teal-800 mb-2">
+              3. Backend <span class="text-xs text-gray-500">(Optional)</span>
+            </h3>
+            <p class="text-gray-700 text-sm mb-2">
+              <strong>(Firebase Realtime Database / Firestore)</strong>
+            </p>
+            <ul
+              class="list-disc list-inside text-left text-gray-600 text-sm space-y-1"
+            >
+              <li>SOS Alerts Storage</li>
+              <li>Volunteer/Stock Management</li>
+              <li>Firebase Authentication (User/Admin Login)</li>
+            </ul>
+          </div>
+
+          <div class="arch-arrow-down"></div>
+
+          <!-- 4. Mobile/Web App -->
+          <div class="arch-node text-center">
+            <h3 class="text-lg font-bold text-teal-800 mb-2">
+              4. Mobile/Web App
+            </h3>
+            <p class="text-gray-700 text-sm mb-2"><strong>(Flutter)</strong></p>
+            <ul
+              class="list-disc list-inside text-left text-gray-600 text-sm space-y-1"
+            >
+              <li>Emergency SOS Alerts</li>
+              <li>Volunteer Dashboard</li>
+              <li>Contacts Directory</li>
+              <li>Stock Management</li>
+              <li>Real-time Notifications</li>
+              <li>Admin Controls</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="bg-gray-900 text-white text-center p-8 mt-12 rounded-tr-3xl rounded-tl-3xl shadow-inner"
+    >
+      <p class="text-lg">&copy; 2025 VIRA Project. All rights reserved.</p>
+      <p class="text-sm mt-2 opacity-80">
+        Designed with purpose, built for impact.
+      </p>
+    </footer>
+  </body>
+</html>
