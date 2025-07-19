@@ -8,12 +8,12 @@
     <style>
       body {
         font-family: "Inter", sans-serif;
-        background-color: #f8fafc;
+        background-color: #f9f5ff;
         color: #333;
         line-height: 1.6;
       }
       .header {
-        background: linear-gradient(to right, #0d9488, #14b8a6);
+        background: linear-gradient(to right, #a855f7, #9333ea);
         color: white;
         padding: 3rem 0;
         text-align: center;
@@ -24,7 +24,7 @@
       .section-title {
         font-size: 2.5rem;
         font-weight: 800;
-        color: #047857;
+        color: #7e22ce;
         margin-bottom: 2rem;
         text-align: center;
         position: relative;
@@ -38,7 +38,7 @@
         transform: translateX(-50%);
         width: 80px;
         height: 4px;
-        background-color: #14b8a6;
+        background-color: #9333ea;
         border-radius: 2px;
       }
       .card {
@@ -48,7 +48,7 @@
         box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1),
           0 6px 12px -3px rgba(0, 0, 0, 0.05);
         margin-bottom: 2.5rem;
-        border: 1px solid #e0f2f7;
+        border: 1px solid #e9d5ff;
         transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
       }
       .card:hover {
@@ -58,7 +58,7 @@
       }
       .arch-node {
         background-color: #ffffff;
-        border: 2px solid #0d9488;
+        border: 2px solid #9333ea;
         border-radius: 16px;
         padding: 1.25rem;
         box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.1);
@@ -70,7 +70,7 @@
       }
       .arch-arrow-down {
         width: 3px;
-        background-color: #14b8a6;
+        background-color: #a855f7;
         height: 40px;
         margin: 12px auto;
         position: relative;
@@ -84,7 +84,7 @@
         height: 0;
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
-        border-top: 16px solid #14b8a6;
+        border-top: 16px solid #9333ea;
       }
       @media (max-width: 768px) {
         .arch-diagram-flow {
@@ -94,6 +94,7 @@
       }
     </style>
   </head>
+
   <body>
     <!-- HEADER -->
     <header class="header">
@@ -140,13 +141,23 @@
           />
         </div>
       </section>
+      <!-- MOBILE APP UI -->
+<section>
+  <h2 class="section-title">Mobile App UI</h2>
+  <div class="card flex flex-col md:flex-row justify-center items-center gap-8">
+    <img src="images/vira_app1.jpg" alt="VIRA App Home" class="rounded-lg shadow-xl max-w-sm h-auto" />
+    <img src="images/vira_app2.jpg" alt="VIRA Dashboard" class="rounded-lg shadow-xl max-w-sm h-auto" />
+    <img src="images/vira_app3.jpg" alt="VIRA Dashboard" class="rounded-lg shadow-xl max-w-sm h-auto" />
+  </div>
+</section>
+
 
       <!-- ARCHITECTURE -->
       <section>
         <h2 class="section-title">VIRA System Architecture</h2>
         <div class="card flex flex-col items-center arch-diagram-flow">
           <div class="arch-node text-center">
-            <h3 class="font-bold text-lg text-teal-700 mb-2">
+            <h3 class="font-bold text-lg text-purple-700 mb-2">
               1. Wearable Device
             </h3>
             <p class="text-sm">
@@ -154,11 +165,9 @@
               LED indicators, LoRa communication.
             </p>
           </div>
-
           <div class="arch-arrow-down"></div>
-
           <div class="arch-node text-center">
-            <h3 class="font-bold text-lg text-teal-700 mb-2">
+            <h3 class="font-bold text-lg text-purple-700 mb-2">
               2. LoRa Mesh Network
             </h3>
             <p class="text-sm">
@@ -166,11 +175,9 @@
               locally or to cloud.
             </p>
           </div>
-
           <div class="arch-arrow-down"></div>
-
           <div class="arch-node text-center">
-            <h3 class="font-bold text-lg text-teal-700 mb-2">
+            <h3 class="font-bold text-lg text-purple-700 mb-2">
               3. Cloud Backend (Optional)
             </h3>
             <p class="text-sm">
@@ -178,11 +185,9 @@
               stocks, and provides notifications.
             </p>
           </div>
-
           <div class="arch-arrow-down"></div>
-
           <div class="arch-node text-center">
-            <h3 class="font-bold text-lg text-teal-700 mb-2">
+            <h3 class="font-bold text-lg text-purple-700 mb-2">
               4. Mobile/Web Dashboard
             </h3>
             <p class="text-sm">
@@ -192,11 +197,69 @@
           </div>
         </div>
       </section>
-    </main>
+
+      <!-- WORKING -->
+<section>
+  <h2 class="section-title">How VIRA Works</h2>
+  <div class="flex flex-wrap justify-center gap-6">
+    <div class="arch-node w-full md:w-64">
+      <h3 class="font-bold text-lg text-purple-700 mb-2">1. User Initiates Alert</h3>
+      <p class="text-sm">User presses a tactile button on the wearable device, corresponding to a specific emergency type (e.g., medical, food, safety).</p>
+    </div>
+    <div class="arch-node w-full md:w-64">
+      <h3 class="font-bold text-lg text-purple-700 mb-2">2. Data Packaging & Transmission</h3>
+      <p class="text-sm">ESP32 reads the button input, packages the alert with Device ID, Alert Type, Timestamp, and transmits via LoRa.</p>
+    </div>
+    <div class="arch-node w-full md:w-64">
+      <h3 class="font-bold text-lg text-purple-700 mb-2">3. Alert Reception (Base Unit)</h3>
+      <p class="text-sm">Nearby LoRa-enabled base unit receives the alert, processes it, and triggers the next action.</p>
+    </div>
+    <div class="arch-node w-full md:w-64">
+      <h3 class="font-bold text-lg text-purple-700 mb-2">4. ACK & Optional Cloud Forwarding</h3>
+      <p class="text-sm">Base unit sends ACK back to wearable, logs alert, and optionally forwards to cloud/mobile dashboard.</p>
+    </div>
+    <div class="arch-node w-full md:w-64">
+      <h3 class="font-bold text-lg text-purple-700 mb-2">5. User Confirmation</h3>
+      <p class="text-sm">Wearable confirms alert delivery with vibration and/or LED to reassure the user.</p>
+    </div>
+  </div>
+</section>
+
+<!-- KEY FEATURES -->
+<section class="mt-12">
+  <h2 class="section-title">Key Features</h2>
+  <div class="flex flex-wrap justify-center gap-6">
+    <div class="arch-node w-full md:w-64">
+      <h3 class="font-bold text-lg text-purple-700 mb-2">Offline First</h3>
+      <p class="text-sm">Operates without internet or mobile networks, ideal for disaster-hit or remote regions.</p>
+    </div>
+    <div class="arch-node w-full md:w-64">
+      <h3 class="font-bold text-lg text-purple-700 mb-2">One-Touch Alerts</h3>
+      <p class="text-sm">Dedicated tactile buttons for medical, food, or safety emergencies for quick response.</p>
+    </div>
+    <div class="arch-node w-full md:w-64">
+      <h3 class="font-bold text-lg text-purple-700 mb-2">LoRa Communication</h3>
+      <p class="text-sm">Long-range, ultra-low power wireless transmission extending communication reach significantly.</p>
+    </div>
+    <div class="arch-node w-full md:w-64">
+      <h3 class="font-bold text-lg text-purple-700 mb-2">Real-Time Acknowledgment</h3>
+      <p class="text-sm">Instant vibration/LED feedback to confirm alert reception, reducing user anxiety.</p>
+    </div>
+    <div class="arch-node w-full md:w-64">
+      <h3 class="font-bold text-lg text-purple-700 mb-2">Gender-Sensitive Design</h3>
+      <p class="text-sm">Prioritizes women’s safety with discreet communication tools tailored to their needs.</p>
+    </div>
+    <div class="arch-node w-full md:w-64">
+      <h3 class="font-bold text-lg text-purple-700 mb-2">Scalable System</h3>
+      <p class="text-sm">Expandable from small setups to large mesh networks supporting thousands of users.</p>
+    </div>
+  </div>
+</section>
+
 
     <!-- FOOTER -->
     <footer
-      class="bg-gray-900 text-white text-center p-8 mt-12 rounded-tr-3xl rounded-tl-3xl"
+      class="bg-purple-900 text-white text-center p-8 mt-12 rounded-tr-3xl rounded-tl-3xl"
     >
       <p class="text-lg">&copy; 2025 VIRA Project. All rights reserved.</p>
       <p class="text-sm mt-2 opacity-80">
